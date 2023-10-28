@@ -1,0 +1,16 @@
+include: package:very_good_analysis/analysis_options.yaml
+
+analyzer:
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+    - "lib/firebase_options.dart"
+
+linter:
+  rules:
+    public_member_api_docs: false
+    one_member_abstracts: false
+    sort_pub_dependencies: false
+    depend_on_referenced_packages: false
+    directives_ordering: false
+    no_leading_underscores_for_local_identifiers: false

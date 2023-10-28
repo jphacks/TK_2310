@@ -1,0 +1,81 @@
+name: safa_app
+description: A new Flutter project.
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.1.4 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # State Management
+  flutter_hooks: ^0.20.1
+  hooks_riverpod: ^2.4.1
+  riverpod_annotation: ^2.1.6
+  freezed: ^2.4.3
+
+  # Tools
+  import_sorter: ^4.6.0
+  intl: ^0.18.1
+  flutter_gen: ^5.3.2
+  json_annotation: ^4.8.1
+  json_serializable: ^6.7.1
+
+  # UI
+  cupertino_icons: ^1.0.2
+  extended_image: ^8.1.1
+  flutter_svg: ^2.0.7
+  gap: ^3.0.1
+  google_fonts: ^6.1.0
+  carousel_slider: ^4.2.1
+  firebase_auth: ^4.12.0
+  firebase_core: ^2.20.0
+  dio: ^5.3.3
+  salomon_bottom_bar: ^3.3.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # Lint
+  flutter_lints: ^2.0.0
+  very_good_analysis: ^5.1.0
+
+  # Generate
+  flutter_gen_runner: ^5.3.2
+  build_runner: ^2.4.6
+  riverpod_generator: ^2.3.3
+
+  # TODO(mine2424): あとで用意する
+  # flutter_launcher_icons: ^0.13.1
+  # flutter_native_splash: ^2.3.2
+
+import_sorter:
+  emojis: true # Optional, defaults to false
+  comments: false # Optional, defaults to true
+
+flutter_gen:
+  output: lib/gen/
+  line_length: 80
+
+  integrations:
+    flutter_svg: true
+    flare_flutter: true
+    rive: true
+    lottie: true
+
+  colors:
+    enabled: true
+    outputs:
+      class_name: AppColor
+    inputs:
+      - assets/color/colors.xml
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/

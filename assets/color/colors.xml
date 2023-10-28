@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="PrimaryGreen">#6D9B00</color>
+    <color name="PrimaryOrange">#9C4800</color>
+    <color name="PrimaryOrangeBg">#FDF1DB</color>
+    <color name="PrimaryGreenBg">#E3F4C1</color>
+    <color name="PrimaryGreenFill">#C6F075</color>
+    <color name="Black">#000000</color>
+    <color name="PrimaryGreenDark">#51661E</color>
+    <color name="GrayText">#888888</color>
+    <color name="GrayFill">#D9D9D9</color>
+    <color name="GrayBg">#F5F7F1</color>
+    <color name="White">#FFFFFF</color>
+    <color name="OrangeBg">#FFF4E9</color>
+    <color name="ChipBlue">#C1D3F5</color>
+</resources>

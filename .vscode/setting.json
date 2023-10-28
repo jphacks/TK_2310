@@ -1,0 +1,12 @@
+{
+  "dart.previewFlutterUiGuides": true,
+  "dart.previewFlutterUiGuidesCustomTracking": true,
+  "dart.closingLabels": false,
+  "editor.formatOnSave": true,
+  "editor.rulers": [80],
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.organizeImports": true
+  },
+  "dart.runPubGetOnPubspecChanges": "never"
+}
