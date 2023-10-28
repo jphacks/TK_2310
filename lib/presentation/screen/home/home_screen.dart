@@ -46,12 +46,13 @@ class HomeScreen extends HookConsumerWidget {
     );
     final achievementRate = useFuture(achievementRateMemoriszed);
 
-    final isLoading =
-        !(participatingEventsFuture.hasData && recommendedEventsFuture.hasData && achievementRate.hasData);
+    final isLoading = !(participatingEventsFuture.hasData &&
+        recommendedEventsFuture.hasData &&
+        achievementRate.hasData);
 
     return Scaffold(
       // TODO(mine2424): AppBar なくてもいいかも
-      appBar: const AppBarBase(title: 'ホーム'),
+      appBar: const AppBarBase(title: 'ホーム', leading: SizedBox()),
       body: isLoading
           ? const Center(
               child: CircularProgressIndicator(color: AppColor.primaryGreen),
@@ -103,7 +104,10 @@ class HomeScreen extends HookConsumerWidget {
                       const Gap(16),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: participatingEventsFuture.data!.asMap().entries.map((entry) {
+                        children: participatingEventsFuture.data!
+                            .asMap()
+                            .entries
+                            .map((entry) {
                           return GestureDetector(
                             onTap: () async {
                               await carouselController.animateToPage(entry.key);
@@ -114,8 +118,13 @@ class HomeScreen extends HookConsumerWidget {
                               margin: const EdgeInsets.symmetric(horizontal: 3),
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                color: (Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black)
-                                    .withOpacity(_current.value == entry.key ? 0.9 : 0.3),
+                                color: (Theme.of(context).brightness ==
+                                            Brightness.dark
+                                        ? Colors.white
+                                        : Colors.black)
+                                    .withOpacity(
+                                  _current.value == entry.key ? 0.9 : 0.3,
+                                ),
                               ),
                             ),
                           );

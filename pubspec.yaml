@@ -24,6 +24,13 @@ dependencies:
   json_annotation: ^4.8.1
   json_serializable: ^6.7.1
 
+  # Firebase
+  firebase_auth: ^4.12.0
+  firebase_core: ^2.20.0
+
+  # Network
+  dio: ^5.3.3
+
   # UI
   cupertino_icons: ^1.0.2
   extended_image: ^8.1.1
@@ -31,10 +38,8 @@ dependencies:
   gap: ^3.0.1
   google_fonts: ^6.1.0
   carousel_slider: ^4.2.1
-  firebase_auth: ^4.12.0
-  firebase_core: ^2.20.0
-  dio: ^5.3.3
   salomon_bottom_bar: ^3.3.2
+  lottie: ^2.6.0
 
 dev_dependencies:
   flutter_test:
@@ -79,3 +84,4 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/lottie/

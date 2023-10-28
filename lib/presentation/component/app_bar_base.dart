@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+
 import 'package:safa_app/gen/colors.gen.dart';
 
 class AppBarBase extends StatelessWidget implements PreferredSizeWidget {

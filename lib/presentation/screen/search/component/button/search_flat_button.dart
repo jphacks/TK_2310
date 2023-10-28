@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:gap/gap.dart';
+
 import 'package:safa_app/gen/colors.gen.dart';
 
 class SearchFlatButton extends StatelessWidget {
@@ -21,7 +23,8 @@ class SearchFlatButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: isWidly ? double.infinity : MediaQuery.sizeOf(context).width * 0.42,
+        width:
+            isWidly ? double.infinity : MediaQuery.sizeOf(context).width * 0.42,
         decoration: BoxDecoration(
           color: AppColor.primaryOrangeBg,
           borderRadius: BorderRadius.circular(8),

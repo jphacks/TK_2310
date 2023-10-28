@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:gap/gap.dart';
+
 import 'package:safa_app/gen/colors.gen.dart';
 import 'package:safa_app/presentation/component/app_bar_base.dart';
 import 'package:safa_app/presentation/component/button/filled_text_button.dart';
@@ -34,7 +36,10 @@ class EventShelfSearchScreen extends StatelessWidget {
                     ChipBase(
                       labelText: 'STEP1',
                       backgroundColor: AppColor.primaryGreenFill,
-                      labelTextStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.normal),
+                      labelTextStyle: Theme.of(context)
+                          .textTheme
+                          .bodyMedium!
+                          .copyWith(fontWeight: FontWeight.normal),
                     ),
                     const Gap(24),
                     Text('日付と時間帯を選択', style: boldNotoSansTextStyle(20)),
@@ -47,7 +52,10 @@ class EventShelfSearchScreen extends StatelessWidget {
                     ChipBase(
                       labelText: 'STEP2',
                       backgroundColor: AppColor.primaryGreenFill,
-                      labelTextStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.normal),
+                      labelTextStyle: Theme.of(context)
+                          .textTheme
+                          .bodyMedium!
+                          .copyWith(fontWeight: FontWeight.normal),
                     ),
                     const Gap(24),
                     Text('検索方法を選択', style: boldNotoSansTextStyle(20)),
@@ -60,7 +68,10 @@ class EventShelfSearchScreen extends StatelessWidget {
                     ChipBase(
                       labelText: 'STEP3',
                       backgroundColor: AppColor.primaryGreenFill,
-                      labelTextStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.normal),
+                      labelTextStyle: Theme.of(context)
+                          .textTheme
+                          .bodyMedium!
+                          .copyWith(fontWeight: FontWeight.normal),
                     ),
                     const Gap(24),
                     Text('最適なスケジュールを提案', style: boldNotoSansTextStyle(20)),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
+
 import 'package:safa_app/domain/entity/event.dart';
 import 'package:safa_app/presentation/component/card/event_card.dart';
 import 'package:safa_app/presentation/component/chip/chip_base.dart';
