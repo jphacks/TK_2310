@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
@@ -31,6 +33,8 @@ class EventDetailScreen extends HookConsumerWidget {
 
     // 本日から締め切りまでの残りの日数
     final diffDeadline = (data?.applicationDeadline ?? DateTime.now()).difference(DateTime.now()).inDays;
+
+    final eventStatus = useState(0);
 
     useEffect(
       () {
@@ -70,12 +74,12 @@ class EventDetailScreen extends HookConsumerWidget {
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16),
                   child: Wrap(
-                    runSpacing: 2,
-                    spacing: 4,
+                    runSpacing: 4,
+                    spacing: 8,
                     children: [
-                      ChipBase(labelText: 'イベント', backgroundColor: AppColor.primaryGreen),
-                      ChipBase(labelText: 'イベント', backgroundColor: AppColor.chipBlue),
-                      ChipBase(labelText: 'イベント', backgroundColor: AppColor.primaryOrange),
+                      ChipBase(labelText: '参加者多数', backgroundColor: AppColor.chipPurple),
+                      ChipBase(labelText: '開催日が近い', backgroundColor: AppColor.chipRed),
+                      ChipBase(labelText: '残りわずか', backgroundColor: AppColor.chipYellow),
                     ],
                   ),
                 ),
@@ -247,6 +251,7 @@ class EventDetailScreen extends HookConsumerWidget {
                 SizedBox(
                   height: 210,
                   child: GoogleMap(
+                    myLocationButtonEnabled: false,
                     initialCameraPosition: CameraPosition(
                       target: eventLatLng.value,
                       zoom: 14.8,
@@ -280,26 +285,161 @@ class EventDetailScreen extends HookConsumerWidget {
                     ],
                   ),
                 ),
-                // TODO(mine2424): 以下からボタンの条件分岐が多数あるので、Widget化する
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(
-                    '募集締め切り: ${data.applicationDeadline.year}/${data.applicationDeadline.month}/${data.applicationDeadline.day}',
-                    style: Theme.of(context).textTheme.bodySmall,
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                const Gap(8),
-                FilledTextButton(
-                  labelText: 'イベントに申し込む',
-                  isWidly: true,
-                  // backgroundColor: AppColor.primaryGreenBg,
-                  // labelTextStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                  //       color: AppColor.primaryGreenDark,
-                  //     ),
-                  onPressed: () {},
-                  outsidePadding: const EdgeInsets.symmetric(horizontal: 16),
-                ),
+                () {
+                  switch (eventStatus.value) {
+                    case 0:
+                      return Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
+                            child: Text(
+                              '募集締め切り: ${data.applicationDeadline.year}/${data.applicationDeadline.month}/${data.applicationDeadline.day}',
+                              style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                                    color: AppColor.primaryOrange,
+                                  ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          const Gap(8),
+                          FilledTextButton(
+                            labelText: 'イベントに申し込む',
+                            isWidly: true,
+                            onPressed: () {
+                              eventStatus.value = 1;
+                            },
+                            outsidePadding: const EdgeInsets.symmetric(horizontal: 16),
+                          ),
+                        ],
+                      );
+                    case 1:
+                      return Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
+                            child: Text(
+                              '集合場所と開始時刻を確認して\nイベントに参加してください',
+                              style: Theme.of(context).textTheme.bodySmall!.copyWith(color: AppColor.primaryGreenDark),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          const Gap(8),
+                          FilledTextButton(
+                            labelText: 'イベント申込済み',
+                            isWidly: true,
+                            backgroundColor: AppColor.primaryGreenBg,
+                            labelTextStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                  color: AppColor.primaryGreenDark,
+                                ),
+                            onPressed: () {
+                              sleep(const Duration(seconds: 5));
+                              eventStatus.value = 2;
+                            },
+                            outsidePadding: const EdgeInsets.symmetric(horizontal: 16),
+                          ),
+                        ],
+                      );
+                    case 2:
+                      return Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
+                            child: Text(
+                              'リーダーによってイベントが開始されました\nゴミ拾いをしましょう!',
+                              style: Theme.of(context).textTheme.bodySmall!.copyWith(color: AppColor.primaryGreenDark),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          const Gap(8),
+                          FilledTextButton(
+                            labelText: 'イベント開催中',
+                            isWidly: true,
+                            backgroundColor: AppColor.primaryGreenBg,
+                            labelTextStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                  color: AppColor.primaryGreenDark,
+                                ),
+                            onPressed: () {
+                              eventStatus.value = 3;
+                            },
+                            outsidePadding: const EdgeInsets.symmetric(horizontal: 16),
+                          ),
+                        ],
+                      );
+                    case 3:
+                      return Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
+                            child: Text(
+                              'ゴミ拾いが終わったらイベントを完了してください\n完了の操作がないと欠席扱いになります',
+                              style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                                    color: AppColor.primaryOrange,
+                                  ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          const Gap(8),
+                          FilledTextButton(
+                            labelText: 'ゴミ拾いを完了する',
+                            isWidly: true,
+                            onPressed: () {
+                              // dialog
+                              showDialog<void>(
+                                context: context,
+                                barrierDismissible: false,
+                                builder: (context) {
+                                  return Dialog(
+                                    child: Container(
+                                      height: 600,
+                                      padding: const EdgeInsets.all(16),
+                                      child: Wrap(
+                                        children: [
+                                          Text(
+                                            'イベントを完了しますか？',
+                                            style: Theme.of(context).textTheme.bodyMedium,
+                                          ),
+                                          const Gap(16),
+                                          Row(
+                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              FilledTextButton(
+                                                labelText: 'キャンセル',
+                                                isWidly: true,
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                outsidePadding: const EdgeInsets.symmetric(horizontal: 16),
+                                              ),
+                                              FilledTextButton(
+                                                labelText: '完了する',
+                                                isWidly: true,
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                  eventStatus.value = 4;
+                                                },
+                                                outsidePadding: const EdgeInsets.symmetric(horizontal: 16),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  );
+                                },
+                              );
+                            },
+                            outsidePadding: const EdgeInsets.symmetric(horizontal: 16),
+                          ),
+                        ],
+                      );
+                    default:
+                      return FilledTextButton(
+                        labelText: '欠席・開催終了しました',
+                        isWidly: true,
+                        onPressed: () {},
+                        outsidePadding: const EdgeInsets.symmetric(horizontal: 16),
+                      );
+                  }
+                }(),
                 const Gap(16),
               ],
             ),
