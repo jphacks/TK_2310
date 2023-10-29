@@ -79,7 +79,7 @@ class SearchScreen extends HookConsumerWidget {
               children: [
                 SearchFlatButton(
                   icon: Icons.event,
-                  selectedText: '10月28日(木)',
+                  selectedText: '日付で検索',
                   onTap: () async {
                     dateState.value = await customDatePicker(context);
                     await _search();
@@ -87,7 +87,7 @@ class SearchScreen extends HookConsumerWidget {
                 ),
                 SearchFlatButton(
                   icon: Icons.access_time,
-                  selectedText: '10:00 以降',
+                  selectedText: '時間で検索',
                   onTap: () async {
                     timeState.value = await customTimePicker(context);
                     await _search();
@@ -98,7 +98,7 @@ class SearchScreen extends HookConsumerWidget {
             const Gap(16),
             SearchFlatButton(
               icon: Icons.access_time,
-              selectedText: '1,000円 以上',
+              selectedText: '最低価格で検索',
               onTap: () async {
                 await searchModalBottomSheet(
                   context,
@@ -116,7 +116,7 @@ class SearchScreen extends HookConsumerWidget {
             const Gap(16),
             SearchFlatButton(
               icon: Icons.place_outlined,
-              selectedText: '東京都渋谷区代々木神園町 周辺',
+              selectedText: '場所で検索',
               isWidly: true,
               onTap: () async {
                 await searchModalBottomSheet(

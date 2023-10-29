@@ -116,14 +116,14 @@ class EventShelfSearchScreen extends HookConsumerWidget {
                   children: [
                     SearchFlatButton(
                       icon: Icons.event,
-                      selectedText: '10月28日(木)',
+                      selectedText: '日付を選択',
                       onTap: () async {
                         dateState.value = await customDatePicker(context);
                       },
                     ),
                     SearchFlatButton(
                       icon: Icons.access_time,
-                      selectedText: '10:00 以降',
+                      selectedText: '時間を選択',
                       onTap: () async {
                         timeState.value = await customTimePicker(context);
                       },
@@ -133,7 +133,7 @@ class EventShelfSearchScreen extends HookConsumerWidget {
                 const Gap(16),
                 SearchFlatButton(
                   icon: Icons.place_outlined,
-                  selectedText: '東京都渋谷区代々木神園町 周辺',
+                  selectedText: '住所で検索',
                   isWidly: true,
                   onTap: () async {
                     await searchModalBottomSheet(
