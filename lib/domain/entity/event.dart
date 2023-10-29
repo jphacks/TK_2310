@@ -14,7 +14,6 @@ class Event with _$Event {
     @Default('') String memberId,
     @Default(0) int organizationId,
     @Default(0) int averageScore,
-    @Default(0) int eventId,
     @Default('') String id,
     @Default('') String title,
     @Default('') String hostCompanyName,

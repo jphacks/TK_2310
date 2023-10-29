@@ -6,7 +6,7 @@ part of 'safa_backend_api.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$safaBackendApiHash() => r'9d0fe973dfffe7781c50e9edbd15a431bfff386e';
+String _$safaBackendApiHash() => r'a20246026852269c25aabe2647237962e1e682d5';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -39,11 +39,11 @@ class SafaBackendApiFamily extends Family<Dio> {
   const SafaBackendApiFamily();
 
   /// See also [safaBackendApi].
-  SafaBackendApiProvider call([
-    String? token,
-  ]) {
+  SafaBackendApiProvider call({
+    bool isMock = true,
+  }) {
     return SafaBackendApiProvider(
-      token,
+      isMock: isMock,
     );
   }
 
@@ -52,7 +52,7 @@ class SafaBackendApiFamily extends Family<Dio> {
     covariant SafaBackendApiProvider provider,
   ) {
     return call(
-      provider.token,
+      isMock: provider.isMock,
     );
   }
 
@@ -76,12 +76,12 @@ class SafaBackendApiFamily extends Family<Dio> {
 /// See also [safaBackendApi].
 class SafaBackendApiProvider extends Provider<Dio> {
   /// See also [safaBackendApi].
-  SafaBackendApiProvider([
-    String? token,
-  ]) : this._internal(
+  SafaBackendApiProvider({
+    bool isMock = true,
+  }) : this._internal(
           (ref) => safaBackendApi(
             ref as SafaBackendApiRef,
-            token,
+            isMock: isMock,
           ),
           from: safaBackendApiProvider,
           name: r'safaBackendApiProvider',
@@ -92,7 +92,7 @@ class SafaBackendApiProvider extends Provider<Dio> {
           dependencies: SafaBackendApiFamily._dependencies,
           allTransitiveDependencies:
               SafaBackendApiFamily._allTransitiveDependencies,
-          token: token,
+          isMock: isMock,
         );
 
   SafaBackendApiProvider._internal(
@@ -102,10 +102,10 @@ class SafaBackendApiProvider extends Provider<Dio> {
     required super.allTransitiveDependencies,
     required super.debugGetCreateSourceHash,
     required super.from,
-    required this.token,
+    required this.isMock,
   }) : super.internal();
 
-  final String? token;
+  final bool isMock;
 
   @override
   Override overrideWith(
@@ -120,7 +120,7 @@ class SafaBackendApiProvider extends Provider<Dio> {
         dependencies: null,
         allTransitiveDependencies: null,
         debugGetCreateSourceHash: null,
-        token: token,
+        isMock: isMock,
       ),
     );
   }
@@ -132,21 +132,21 @@ class SafaBackendApiProvider extends Provider<Dio> {
 
   @override
   bool operator ==(Object other) {
-    return other is SafaBackendApiProvider && other.token == token;
+    return other is SafaBackendApiProvider && other.isMock == isMock;
   }
 
   @override
   int get hashCode {
     var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, token.hashCode);
+    hash = _SystemHash.combine(hash, isMock.hashCode);
 
     return _SystemHash.finish(hash);
   }
 }
 
 mixin SafaBackendApiRef on ProviderRef<Dio> {
-  /// The parameter `token` of this provider.
-  String? get token;
+  /// The parameter `isMock` of this provider.
+  bool get isMock;
 }
 
 class _SafaBackendApiProviderElement extends ProviderElement<Dio>
@@ -154,7 +154,7 @@ class _SafaBackendApiProviderElement extends ProviderElement<Dio>
   _SafaBackendApiProviderElement(super.provider);
 
   @override
-  String? get token => (origin as SafaBackendApiProvider).token;
+  bool get isMock => (origin as SafaBackendApiProvider).isMock;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

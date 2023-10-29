@@ -7,8 +7,8 @@
 // ignore_for_file: type=lint
 // ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
 
-import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutter/material.dart';
 
 class AppColor {
   AppColor._();
@@ -18,6 +18,18 @@ class AppColor {
 
   /// Color: #C1D3F5
   static const Color chipBlue = Color(0xFFC1D3F5);
+
+  /// Color: #C1F5F5
+  static const Color chipOcean = Color(0xFFC1F5F5);
+
+  /// Color: #CFC1F5
+  static const Color chipPurple = Color(0xFFCFC1F5);
+
+  /// Color: #F5C1C1
+  static const Color chipRed = Color(0xFFF5C1C1);
+
+  /// Color: #F5E4C1
+  static const Color chipYellow = Color(0xFFF5E4C1);
 
   /// Color: #F5F7F1
   static const Color grayBg = Color(0xFFF5F7F1);

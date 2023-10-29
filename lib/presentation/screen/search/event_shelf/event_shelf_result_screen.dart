@@ -16,7 +16,10 @@ import 'package:safa_app/theme.dart';
 import 'package:safa_app/util/format/currency_format.dart';
 
 class EventShelfResultScreen extends HookWidget {
-  const EventShelfResultScreen({super.key});
+  const EventShelfResultScreen({required this.events, super.key, this.sumPrice = 0});
+
+  final List<Event> events;
+  final int sumPrice;
 
   @override
   Widget build(BuildContext context) {
@@ -58,10 +61,7 @@ class EventShelfResultScreen extends HookWidget {
                         children: [
                           Text(
                             'おすすめのスケジュールが\nできました',
-                            style: Theme.of(context)
-                                .textTheme
-                                .headlineSmall!
-                                .copyWith(
+                            style: Theme.of(context).textTheme.headlineSmall!.copyWith(
                                   color: AppColor.white,
                                 ),
                           ),
@@ -79,20 +79,14 @@ class EventShelfResultScreen extends HookWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                '10月21日',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodySmall!
-                                    .copyWith(
+                                '${events[0].willStartAt.month}月${events[0].willStartAt.month}日',
+                                style: Theme.of(context).textTheme.bodySmall!.copyWith(
                                       color: AppColor.white,
                                     ),
                               ),
                               Text(
-                                '3件のイベントに参加',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headlineSmall!
-                                    .copyWith(
+                                '${events.length}件のイベントに参加',
+                                style: Theme.of(context).textTheme.headlineSmall!.copyWith(
                                       color: AppColor.white,
                                     ),
                               ),
@@ -104,19 +98,13 @@ class EventShelfResultScreen extends HookWidget {
                             children: [
                               Text(
                                 '報酬の合計',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodySmall!
-                                    .copyWith(
+                                style: Theme.of(context).textTheme.bodySmall!.copyWith(
                                       color: AppColor.white,
                                     ),
                               ),
                               Text(
-                                currencyFormat(9000),
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headlineSmall!
-                                    .copyWith(
+                                currencyFormat(sumPrice),
+                                style: Theme.of(context).textTheme.headlineSmall!.copyWith(
                                       color: AppColor.white,
                                     ),
                               ),
@@ -136,85 +124,36 @@ class EventShelfResultScreen extends HookWidget {
                   ),
                 ),
                 const Gap(16),
-                EventCard(
-                  outsidePadding: const EdgeInsets.symmetric(horizontal: 16),
-                  chips: const [
-                    ChipBase(labelText: '開催日'),
-                  ],
-                  event: Event(
-                    willStartAt: DateTime(2023, 10, 28),
-                    willCompleteAt: DateTime(2023, 10, 28),
-                    applicationDeadline: DateTime.now(),
-                    memberId: '1',
-                    organizationId: 1,
-                    averageScore: 1,
-                    eventId: 1,
-                    id: '1',
-                    title: '港区立青少年センター',
-                    hostCompanyName: '港区',
-                    address: '東京都渋谷区代々木神園町',
-                    participantCount: 10,
-                    unitPrice: 10000,
-                  ),
+                ListView.builder(
+                  physics: const ClampingScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: events.length,
+                  itemBuilder: (context, index) {
+                    return Column(
+                      children: [
+                        EventCard(
+                          outsidePadding: const EdgeInsets.symmetric(horizontal: 16),
+                          chips: const [
+                            ChipBase(labelText: '開催日'),
+                          ],
+                          event: events[index],
+                        ),
+                        if (index != events.length - 1)
+                          const Icon(
+                            Icons.keyboard_arrow_down,
+                            size: 32,
+                            color: AppColor.black,
+                          ),
+                      ],
+                    );
+                  },
                 ),
-                const Icon(
-                  Icons.keyboard_arrow_down,
-                  size: 32,
-                  color: AppColor.black,
-                ),
-                EventCard(
-                  outsidePadding: const EdgeInsets.symmetric(horizontal: 16),
-                  chips: const [
-                    ChipBase(labelText: '開催日'),
-                  ],
-                  event: Event(
-                    willStartAt: DateTime(2023, 10, 28),
-                    willCompleteAt: DateTime(2023, 10, 28),
-                    applicationDeadline: DateTime.now(),
-                    memberId: '1',
-                    organizationId: 1,
-                    averageScore: 1,
-                    eventId: 1,
-                    id: '1',
-                    title: '港区立青少年センター',
-                    hostCompanyName: '港区',
-                    address: '東京都渋谷区代々木神園町',
-                    participantCount: 10,
-                    unitPrice: 10000,
-                  ),
-                ),
-                const Icon(
-                  Icons.keyboard_arrow_down,
-                  size: 32,
-                  color: AppColor.black,
-                ),
-                EventCard(
-                  outsidePadding: const EdgeInsets.symmetric(horizontal: 16),
-                  chips: const [
-                    ChipBase(labelText: '開催日'),
-                  ],
-                  event: Event(
-                    willStartAt: DateTime(2023, 10, 28),
-                    willCompleteAt: DateTime(2023, 10, 28),
-                    applicationDeadline: DateTime.now(),
-                    memberId: '1',
-                    organizationId: 1,
-                    averageScore: 1,
-                    eventId: 1,
-                    id: '1',
-                    title: '港区立青少年センター',
-                    hostCompanyName: '港区',
-                    address: '東京都渋谷区代々木神園町',
-                    participantCount: 10,
-                    unitPrice: 10000,
-                  ),
-                ),
-                // ListView.builder(itemBuilder: ),
                 const Gap(48),
                 FilledTextButton(
                   outsidePadding: const EdgeInsets.symmetric(horizontal: 32),
                   labelText: '全てのイベントに申し込む',
                   onPressed: () {
+                    // TODO: 申し込み処理
                     Navigator.replace(
                       context,
                       oldRoute: ModalRoute.of(context)!,

@@ -13,4 +13,8 @@
     <color name="White">#FFFFFF</color>
     <color name="OrangeBg">#FFF4E9</color>
     <color name="ChipBlue">#C1D3F5</color>
+    <color name="ChipRed">#F5C1C1</color>
+    <color name="ChipYellow">#F5E4C1</color>
+    <color name="ChipPurple">#CFC1F5</color>
+    <color name="ChipOcean">#C1F5F5</color>
 </resources>

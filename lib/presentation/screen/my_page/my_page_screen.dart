@@ -10,7 +10,7 @@ class MyPageScreen extends StatelessWidget {
         title: const Text('MyPage'),
       ),
       body: const Center(
-        child: Text('MyPage\nComing Soon...'),
+        child: Text('Coming Soon...'),
       ),
     );
   }

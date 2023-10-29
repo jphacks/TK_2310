@@ -30,6 +30,23 @@ StringError _validatePassword(String? value) {
 final class AuthUseCase {
   static const signUpPath = '/auth/signup';
 
+  static Future<void> sendIdToken(WidgetRef ref) async {
+    final auth = ref.read(authFoundationProvider);
+    final idToken = await auth.getIdToken();
+
+    final dio = ref.read(SafaBackendApiProvider());
+
+    await dio.post<dynamic>(
+      signUpPath,
+      options: Options(
+        headers: {
+          'Authorization': 'Bearer $idToken',
+        },
+      ),
+      data: {},
+    );
+  }
+
   static Future<StringError> signUp(
     WidgetRef ref, {
     required String email,

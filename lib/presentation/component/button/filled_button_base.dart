@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:safa_app/gen/colors.gen.dart';
 
 class FilledButtonBase extends StatelessWidget {
   const FilledButtonBase({
@@ -9,6 +10,7 @@ class FilledButtonBase extends StatelessWidget {
     this.insidePadding = const EdgeInsets.all(8),
     this.isWidly = false,
     this.height = 50,
+    this.backgroundColor,
   });
 
   final Widget child;
@@ -16,6 +18,7 @@ class FilledButtonBase extends StatelessWidget {
   final EdgeInsetsGeometry insidePadding;
   final bool isWidly;
   final double height;
+  final Color? backgroundColor;
 
   final VoidCallback onPressed;
 
@@ -27,6 +30,9 @@ class FilledButtonBase extends StatelessWidget {
       height: height,
       child: FilledButton(
         onPressed: onPressed,
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all<Color>(backgroundColor ?? AppColor.primaryOrange),
+        ),
         child: Padding(
           padding: insidePadding,
           child: child,
