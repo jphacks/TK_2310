@@ -77,10 +77,22 @@
 
   - https://github.com/jphacks/TK_2310_1/blob/main/algo/dp.go
 
+- imos法による重複区間の高速判定
+  - imos法を用いることでO(n^2)をO(n+m)にし、高速化
+  - https://github.com/jphacks/TK_2310_1/blob/main/algo/imos.go
+
 - Makefile による自作コマンド作成
 - 特に力を入れた部分をファイルリンク、または commit_id を記載してください。
   - https://github.com/jphacks/TK_2310/blob/2d90796d10fe7bbedf520b04944322bd1bfb4c74/lib/presentation/screen/home/component/trash_activity_contribution_card.dart#L19-L31
   - https://github.com/jphacks/TK_2310/blob/2d90796d10fe7bbedf520b04944322bd1bfb4c74/lib/domain/repository/event_repository.dart#L12-L18
+
+- protocol bufferによるスキーマとバリデーションの自動生成
+  - スキーマ駆動開発を快適に行うためにコマンド一つでprotoから構造体とバリデーションの作成を行う
+  - docker内で行うことでローカル管渠を汚さない
+  - dockerとshによって移植せいも高める
+  - https://github.com/jphacks/TK_2310_1/blob/main/scripts/gen_proto.sh
+
+
 
 #### 製品に取り入れた研究内容（データ・ソフトウェアなど）（※アカデミック部門の場合のみ提出必須）
 
