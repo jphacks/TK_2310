@@ -154,12 +154,7 @@ class EventDetailScreen extends HookConsumerWidget {
                           const Gap(4),
                           Text(
                             currencyFormat(
-                              data.unitPrice *
-                                  (data.startedAt ?? DateTime.now())
-                                      .difference(
-                                        data.completedAt ?? DateTime.now(),
-                                      )
-                                      .inHours,
+                              data.unitPrice * data.willCompleteAt.difference(data.willStartAt).inHours,
                             ),
                             style: boldNotoSansTextStyle(20),
                           ),
@@ -381,52 +376,7 @@ class EventDetailScreen extends HookConsumerWidget {
                           FilledTextButton(
                             labelText: 'ゴミ拾いを完了する',
                             isWidly: true,
-                            onPressed: () {
-                              // dialog
-                              showDialog<void>(
-                                context: context,
-                                barrierDismissible: false,
-                                builder: (context) {
-                                  return Dialog(
-                                    child: Container(
-                                      height: 600,
-                                      padding: const EdgeInsets.all(16),
-                                      child: Wrap(
-                                        children: [
-                                          Text(
-                                            'イベントを完了しますか？',
-                                            style: Theme.of(context).textTheme.bodyMedium,
-                                          ),
-                                          const Gap(16),
-                                          Row(
-                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              FilledTextButton(
-                                                labelText: 'キャンセル',
-                                                isWidly: true,
-                                                onPressed: () {
-                                                  Navigator.pop(context);
-                                                },
-                                                outsidePadding: const EdgeInsets.symmetric(horizontal: 16),
-                                              ),
-                                              FilledTextButton(
-                                                labelText: '完了する',
-                                                isWidly: true,
-                                                onPressed: () {
-                                                  Navigator.pop(context);
-                                                  eventStatus.value = 4;
-                                                },
-                                                outsidePadding: const EdgeInsets.symmetric(horizontal: 16),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  );
-                                },
-                              );
-                            },
+                            onPressed: () {},
                             outsidePadding: const EdgeInsets.symmetric(horizontal: 16),
                           ),
                         ],
