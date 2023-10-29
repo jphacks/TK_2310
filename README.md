@@ -1,167 +1,52 @@
-# safa_app
+# SAFA
 
-ゴミ拾いと広告のマッチングサービス「SAFA」のモバイルアプリです。
+[![IMAGE ALT TEXT HERE](https://jphacks.com/wp-content/uploads/2023/07/JPHACKS2023_ogp.png)](https://www.youtube.com/watch?v=yYRQEdfGjEg)
 
-# 導入
+## 製品概要
+### 背景(製品開発のきっかけ、課題等）
+### 製品説明（具体的な製品の説明）
+### 特長
+#### 1. 特長1
+#### 2. 特長2
+#### 3. 特長3
 
-**install flutter**
+### 解決出来ること
+### 今後の展望
+### 注力したこと（こだわり等）
+* 
+* 
 
-```bash
-# if you don't have plugins
-asdf plugin add flutter
-asdf plugin add dart
+## 開発技術
+### 活用した技術
+#### API・データ
+* Google Map API 
+* 
 
-asdf install
-make setup
-```
-
-**install xcodes**
-
-xcodes とは、Xcode のバージョン管理ツールです。
-
-```bash
-brew install xcodesorg/made/xcodes
-xcodes install
-```
-
-**install packages**
-
-```bash
-
-flutter pub run import_sorter:main
-flutter pub add dev:very_good_analysis
-
-# only MacOS
-brew install FlutterGen/tap/fluttergen
-# end
-
-dart pub global activate flutter_gen
+#### フレームワーク・ライブラリ・モジュール
+* Nextjs
+* Flutter
+* echo
 
 
-```
 
-# 使用方法
+### 独自技術
+#### ハッカソンで開発した独自機能・技術
+* お金が最大になるようなイベントプランの計算(バックエンド)
+    * 指定した日のお金が一番多くなるようなイベントプランを提案する。イベント同士の区間は被らない、
+    * 区間スケジューリング問題 + 動的計画法による高速化
+    * これによりO(2^n * nlogn)がO(nlogn)に高速化
+    ```
+    Aは区間の集合であり、A={1,2,3...n}があるとき、各タスクiについて開始時刻s[i]と終了時刻f[i]をもつとする。
+    Aはf(1) <= f(2) <= f(3) <= ... <= f(n)の集合とする。 
+    p(i) = max{i|f(i) <= s(i)}とする
+    i番目の最大値をdp[i]とすると
+    dp[i] = max{dp[p[i]] + a[i] | dp[i-1]}
+    これにより最大値が求められる
+    ```
+    * https://github.com/jphacks/TK_2310_1/blob/main/algo/dp.go
 
-Makefile を使用しているので、以下のコマンドを実行することで、必要なコマンドを実行できます。
+* 特に力を入れた部分をファイルリンク、またはcommit_idを記載してください。
 
-```bash
-# example
-# flutter clean
-make clean
-
-# commit前は必ずformatをかける
-make format
-
-```
-
-# ディレクトリ構成
-
-```
-├── lib/
-│   ├── foundation/ (基盤系のインスタンスまとめ)
-│   │   └── supabase/
-│   │   └── supabase_auth.dart
-│   ├── domain/ (DB アクセス関連)
-│   │   └── entity/
-│   │   ├── xxx_entity.dart
-│   │   └── repository/
-│   │   └── xxx_repo.dart
-│   ├── presentation/ (UI 層)
-│   │   ├── component/ (全ての screen で使用するコンポーネント)
-│   │   ├── screen/
-│   │   └──── xxx/
-│   │         └── component/
-│   │             └── xxx_screen.dart
-│   ├── route
-│   │   └── auto_route.dart
-│   ├── hooks
-│   │   └── use_xxx.dart
-│   ├── use_case/
-│   │ └── xxx_use_case.dart
-│   ├── theme/
-│   │ └── xxx.dart
-│   └── main.dart
-├── pubspec.lock
-├── pubspec.yaml
-├── DOCUMENT.md
-└── README.md
-```
-
-# 実装方針
-
-## 画像の利用
-
-- widget
-
-[extended_image](https://pub.dev/packages/extended_image)を利用しているので、画像のキャッシュは自動で行われる。
-
-```dart
-// example
-// assetsもあります
-ExtendedImage.network(
-    'https://avatars.githubusercontent.com/u/1396951?v=4',
-    width: 100,
-    height: 100,
-    fit: BoxFit.cover,
-    cache: true,
-    border: Border.all(color: Colors.red, width: 1.0),
-    borderRadius: BorderRadius.all(Radius.circular(30.0)),
-    //cancelToken: cancellationToken,
-)
-```
-
-- 画像の挿入
-
-[flutter_gen](https://pub.dev/packages/flutter_gen)を利用しているので、以下のコマンドを実行することで、画像の挿入が可能です。
-
-使い方
-
-```bash
-# assets/imagesに画像を挿入したら、以下のコマンドを実行する
-make build_runner
-```
-
-記法
-
-```dart
-// example
-// profileの部分のが画像のファイル名に値する
-Widget build(BuildContext context) {
-  return Assets.images.profile.image();
-}
-
-```
-
-## 空白の利用
-
-[gap](https://pub.dev/packages/gap)を利用しているので、空白の調整は自動で行われる。
-
-```dart
-// example
-Gap(10)
-```
-
-## カラーの適応
-
-flutter_gen を利用しているので、以下のコマンドを実行することで、カラーの挿入が可能です。
-
-使い方
-
-1. assets/colors にカラーを挿入
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <color name="test_color">#DBEDFB</color>
-    <!-- ここにカラーを挿入する -->
-    <color name="xxxx">16進数のカラーコード</color>
-</resources>
-```
-
-2. assets/colors にカラーを挿入したら、以下のコマンドを実行する
-
-```bash
-make build_runner
-```
-
-<!-- TODO: auto_route, riverpod, hooks, freezed -->
+#### 製品に取り入れた研究内容（データ・ソフトウェアなど）（※アカデミック部門の場合のみ提出必須）
+* 
+* 
