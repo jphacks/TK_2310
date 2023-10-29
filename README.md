@@ -98,6 +98,6 @@
 
 
 #### レポジトリ一覧
-- [バックエンド][https://github.com/jphacks/TK_2310_1]
-- [Webフロント][https://github.com/jphacks/TK_2310_2]
+- [バックエンド](https://github.com/jphacks/TK_2310_1)
+- [Webフロント](https://github.com/jphacks/TK_2310_2)
 - モバイルはこのリポジトリです！！
