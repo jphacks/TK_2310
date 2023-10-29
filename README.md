@@ -43,6 +43,7 @@
 ## 開発技術
 
 ### 活用した技術
+  - 
 
 #### API・データ
 
@@ -89,12 +90,12 @@
 - protocol bufferによるスキーマとバリデーションの自動生成
   - スキーマ駆動開発を快適に行うためにコマンド一つでprotoから構造体とバリデーションの作成を行う
   - docker内で行うことでローカル管渠を汚さない
-  - dockerとshによって移植せいも高める
+  - dockerとshによって移植を高める
   - https://github.com/jphacks/TK_2310_1/blob/main/scripts/gen_proto.sh
 
 
 
-#### 製品に取り入れた研究内容（データ・ソフトウェアなど）（※アカデミック部門の場合のみ提出必須）
-
--
--
+#### レポジトリ一覧
+- [バックエンド][https://github.com/jphacks/TK_2310_1]
+- [Webフロント][https://github.com/jphacks/TK_2310_2]
+- モバイルはこのリポジトリです！！
