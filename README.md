@@ -85,7 +85,6 @@ https://github.com/jphacks/TK_2310/assets/51395778/7a79afe8-3c6b-4ac7-9be0-9ea04
 ### モバイルアプリ(参加者向け)
 - Flutter
 - Flutter Hook & Riverpod
-- Firebase Authentication
 
 
 ### Webフロントエンド(企業向け)
@@ -93,13 +92,16 @@ https://github.com/jphacks/TK_2310/assets/51395778/7a79afe8-3c6b-4ac7-9be0-9ea04
 - MUI
 - Jotai
 - Google Cloud Run
-- Firebase Authentication
 
 ### バックエンド
 - Go
 - echo
 - Google Cloud Run
 - Google Cloud SQL
+
+
+### mBaas
+- Firebase Authentication
 
 
 ### 独自技術
