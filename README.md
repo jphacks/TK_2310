@@ -38,6 +38,16 @@
 5. `企業` イベント終了後、参加者からの画像で活動がきちんと行われたことを確認する
 6. `ユーザー` 企業により活動証跡が確認された後、報酬が支払われる
 
+### 発表スライド
+
+![1.jpg](assets/jphacks_presentation/1.jpg)
+![2.jpg](assets/jphacks_presentation/2.jpg)
+![3.jpg](assets/jphacks_presentation/3.jpg)
+![4.jpg](assets/jphacks_presentation/4.jpg)
+![5.jpg](assets/jphacks_presentation/5.jpg)
+![6.jpg](assets/jphacks_presentation/6.jpg)
+![7.jpg](assets/jphacks_presentation/7.jpg)
+
 ### デモ動画
 
 - 企業向けイベント管理画面（Web）でのイベント作成操作、ユーザー向け画面（モバイルアプリ）でのはしご検索と参加申込操作の順で1本の動画になっています。
