@@ -93,12 +93,17 @@ https://github.com/jphacks/TK_2310/assets/51395778/7a79afe8-3c6b-4ac7-9be0-9ea04
 - Jotai
 - Google Cloud Run
 
+リポジトリはこちら
+https://github.com/jphacks/TK_2310_2
+
 ### バックエンド
 - Go
 - echo
 - Google Cloud Run
 - Google Cloud SQL
 
+リポジトリはこちら
+https://github.com/jphacks/TK_2310_1
 
 ### mBaas
 - Firebase Authentication
